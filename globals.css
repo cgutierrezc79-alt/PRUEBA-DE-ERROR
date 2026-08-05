@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { Fredoka, Poppins } from "next/font/google";
+import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+
+const fredoka = Fredoka({ variable: "--font-fredoka", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["500", "600", "700", "800"] });
+
+export const metadata: Metadata = {
+  title: "Coco Rose - Boutique",
+  description: "Coco Rose - Boutique de Moda Femenina",
+  keywords: ["Coco Rose", "Shop", "Boutique", "Moda Femenina"],
+  icons: { icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg" },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${fredoka.variable} ${poppins.variable} antialiased bg-[#FDF2F4] text-[#2D2124] font-sans selection:bg-[#F3DFE4] selection:text-[#2D2124]`}>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
